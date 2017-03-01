@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Slightest properties for client application -->
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://dna-cluster</value>
+  </property>
+  <property>
+    <name>ha.zookeeper.quorum</name>
+    <value>
+      euca-10-157-69-85:2181,euca-10-157-67-63:2181,euca-10-157-70-158:2181,euca-10-157-70-38:2181,euca-10-157-65-174:2181,euca-10-157-68-60:2181,euca-10-157-69-216:2181
+    </value>
+  </property>
+  <property>
+    <name>dfs.nameservices</name>
+    <value>dna-cluster</value>
+  </property>
+  <property>
+    <name>dfs.ha.namenodes.dna-cluster</name>
+    <value>name-node-1,name-node-2</value>
+  </property>
+  <property>
+    <name>dfs.namenode.rpc-address.dna-cluster.name-node-1</name>
+    <value>euca-10-157-65-152:9000</value>
+  </property>
+  <property>
+    <name>dfs.namenode.rpc-address.dna-cluster.name-node-2</name>
+    <value>euca-10-157-66-195:9000</value>
+  </property>
+  <property>
+    <name>dfs.client.failover.proxy.provider.dna-cluster</name>
+    <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+  </property>
+  <property>
+    <name>dfs.client.use.datanode.hostname</name>
+    <value>true</value>
+  </property>
+</configuration>

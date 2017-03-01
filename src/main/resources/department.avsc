@@ -1,0 +1,32 @@
+{
+	"namespace": "com.nokia.chengdu.training.hdfs.type",
+	"type": "record",
+	"name": "Department",
+	"doc": "Department information contains name and an array of employee objects",
+	"fields": [
+		{ "name": "name", "type": "string", "order": "ascending" },
+		{ 
+			"name": "employees", 
+			"type": {
+				"type": "array", 
+				"items": {
+					"type": "record",
+					"name": "Employee",
+					"doc": "Employee information contains first name, last name and gender",
+					"fields": [
+						{ "name": "firstName", "type": "string" },
+						{ "name": "lastName", "type": "string" },
+						{ 
+							"name": "gender", 
+							"type": {
+								"name": "Gender",
+								"type": "enum", 
+								"symbols": [ "MALE", "FEMALE" ]
+							}
+						}
+					]
+				}
+			}
+		}
+	]
+}

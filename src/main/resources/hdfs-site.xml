@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+    <property>
+        <name>dfs.nameservices</name>
+        <!-- If there are several clusters, please use ',' to saparate them-->
+        <value>dna-cluster</value>
+    </property>
+    <property>
+        <name>dfs.ha.namenodes.dna-cluster</name>
+        <value>name-node-1,name-node-2</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.dna-cluster.name-node-1</name>
+        <value>euca-10-254-84-160:9000</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.dna-cluster.name-node-1</name>
+        <value>euca-10-254-84-160:50070</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.dna-cluster.name-node-2</name>
+        <value>euca-10-254-84-187:9000</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.dna-cluster.name-node-2</name>
+        <value>euca-10-254-84-187:50070</value>
+    </property>
+    <property>
+        <name>dfs.hosts</name>
+        <value>/opt/hadoop-2.7.3/etc/hadoop/slaves</value>
+    </property>
+    <property>
+        <name>dfs.namenode.shared.edits.dir</name>
+        <value>qjournal://euca-10-254-76-251:8485;euca-10-254-68-9:8485;euca-10-254-81-90:8485;euca-10-254-82-179:8485;euca-10-254-65-90:8485;euca-10-254-71-25:8485;euca-10-254-76-187:8485/dna-cluster</value>
+    </property>
+    <property>
+        <name>dfs.journalnode.edits.dir</name>
+        <value>/opt/dna/data/hadoop/journal-data</value>
+    </property>
+    <property>
+        <name>dfs.ha.automatic-failover.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.client.failover.proxy.provider.dna-cluster</name>
+        <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>
+    <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>sshfence</value>
+    </property>
+    <property>
+        <name>dfs.ha.fencing.ssh.private-key-files</name>
+        <value>/root/.ssh/id_rsa</value>
+    </property>
+    <!--
+        The default network port of DataNode is 50010,
+        but 50010 has already been used by NetAct,
+        so change it to be 50011
+    -->
+    <property>
+        <name>dfs.datanode.address</name>
+        <value>0.0.0.0:50011</value>
+    </property>
+</configuration>
